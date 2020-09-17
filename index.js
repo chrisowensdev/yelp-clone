@@ -23,3 +23,22 @@ const server = http.createServer(app);
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}`);
 });
+
+const rootController = require('./routes/index');
+const businessController = require('./routes/business');
+
+app.use('/', rootController);
+app.use('/business', businessController);
+
+
+// const restaurantsModel = require('./models/restaurantsModel');
+
+// app.get('/business/:name', async (req, res) => {
+//     const restaurantData = await restaurantsModel.getAllRestaurants();
+//     restaurantData.map(restaurant => {
+//         if (req.params.name === restaurant.slug) {
+//             console.log(restaurant.restaurant_name)
+//         }
+//     })
+//     res.send('ok').end();
+// })

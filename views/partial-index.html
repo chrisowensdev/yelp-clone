@@ -1,0 +1,9 @@
+<h1>${title}</h1>
+${restaurantData.map(restaurant => {
+return `
+<div class="restaurant-card">
+    <a href="./business/${restaurant.slug}">${restaurant.restaurant_name}</a>
+    ${restaurant.category}
+</div>
+`
+}).join('')}
