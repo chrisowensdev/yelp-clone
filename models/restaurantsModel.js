@@ -32,6 +32,15 @@ class Restaurants {
             return error
         }
     }
+
+    static async addReview(restaurant, title, reveiw, stars) {
+        try {
+
+        } catch (error) {
+            console.error(error);
+
+        }
+    }
 }
 
 module.exports = Restaurants;
