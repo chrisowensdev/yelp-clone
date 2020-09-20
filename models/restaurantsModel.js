@@ -33,9 +33,12 @@ class Restaurants {
         }
     }
 
-    static async addReview(restaurant, title, reveiw, stars) {
+    static async addReview(title, content, stars, restaurantId) {
         try {
-
+            console.log(restaurantId)
+            const starRating = Number(stars);
+            const response = await db.result(`INSERT INTO reviews (title, content, stars, reviewer_id, restaurants_id) VALUES ($1, $2, $3, $4, $5);`, [title, content, starRating, 1, restaurantId]);
+            console.log(response);
         } catch (error) {
             console.error(error);
 

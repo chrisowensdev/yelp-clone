@@ -21,9 +21,16 @@ router.get('/:name', async (req, res) => {
 
 })
 
-router.post('/', async (req, res) => {
-
-})
+router.post('/:slug?', async (req, res) => {
+    const {
+        title,
+        review,
+        stars,
+        restaurantId
+    } = req.body;
+    restaurantsModel.addReview(title, review, stars, restaurantId);
+    res.redirect('back');
+});
 
 
 module.exports = router;

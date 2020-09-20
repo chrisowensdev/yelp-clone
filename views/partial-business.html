@@ -4,9 +4,11 @@
     <p>Stars: ${restaurantData.stars}</p>
     <p>Distance: ${restaurantData.distance}</p>
     <p>Takeout: ${restaurantData.takeout === true ? 'Yes' : 'No'}</p>
+    <p>${restaurantData.id}</p>
     <br><br>
 
-    <form action="/" method="POST">
+    <form action="/business" method="POST">
+        <input type="hidden" name="restaurantId" value=${restaurantData.id}>
         <h2>Write a review</h2>
         <label>Title
             <input type="text" name="title">
@@ -14,28 +16,28 @@
         <label>Review
             <input type="text" name="review">
         </label><br>
-        <label>Stars
-            <select name="" id="">
+        <label>Review
+            <select name="stars" id="stars">
                 <option value="5">5 Stars</option>
-                <option value="5">4 Stars</option>
-                <option value="5">3 Stars</option>
-                <option value="5">2 Stars</option>
-                <option value="5">1 Stars</option>
-                <option value="5">0 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Stars</option>
+                <option value="0">0 Stars</option>
             </select>
         </label>
         <button type="submit">Submit Review</button>
     </form>
 
 
-    <!-- <h2>Reviews</h2>
+    <h2>Reviews</h2>
     ${reviewData.map(review => {
     return `
-    <div>
+    <div class="review-card">
         <h3>${review.title}</h3>
         <p>${review.content}</p>
     </div>
     `
-    }).join('')} -->
+    }).join('')}
 
 </div>
