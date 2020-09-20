@@ -1,22 +1,23 @@
 <div class="body">
-    <h1>${title}</h1>
-    <p>Category: ${restaurantData.category}</p>
-    <p>Stars: ${restaurantData.stars}</p>
-    <p>Distance: ${restaurantData.distance}</p>
-    <p>Takeout: ${restaurantData.takeout === true ? 'Yes' : 'No'}</p>
-    <p>${restaurantData.id}</p>
-    <br><br>
+    <div class=restaurant-info>
+        <h1>${title}</h1>
+        <p>Category: ${restaurantData.category}</p>
+        <p>Stars: ${restaurantData.stars}</p>
+        <p>Distance: ${restaurantData.distance}</p>
+        <p>Takeout: ${restaurantData.takeout === true ? 'Yes' : 'No'}</p>
+    </div>
+
 
     <form action="/business" method="POST">
         <input type="hidden" name="restaurantId" value=${restaurantData.id}>
         <h2>Write a review</h2>
-        <label>Title
+        <label>Title<br>
             <input type="text" name="title">
         </label><br>
         <label>Review
-            <input type="text" name="review">
+            <textarea type="text" name="review" rows="4">Tell us about your experience</textarea>
         </label><br>
-        <label>Review
+        <label class="rating-label">Rating
             <select name="stars" id="stars">
                 <option value="5">5 Stars</option>
                 <option value="4">4 Stars</option>
@@ -35,6 +36,7 @@
     return `
     <div class="review-card">
         <h3>${review.title}</h3>
+        <p class="review-rating">${review.stars}</p>
         <p>${review.content}</p>
     </div>
     `

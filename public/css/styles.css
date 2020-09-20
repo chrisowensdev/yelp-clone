@@ -1,9 +1,86 @@
-body {
-    background-color: grey;
-    color: white;
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
 }
 
-.body {
-    background-color: grey;
-    color: white;
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+.restaurant-info {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    margin: 30px auto;
+    max-width: 600px;
+}
+
+input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+textarea {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+}
+
+.rating-label {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.rating-label select {
+    margin: 10px auto;
+    width: 100px;
+}
+
+.review-card {
+    border: 1px solid black;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.review-card .review-rating {
+    text-align: center;
+}
+
+.review-card p:last-child {
+    margin: 20px;
+}
+
+@media screen and (max-width: 630px) {
+    .restaurant-info {
+        width: 90%;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    .review-card {
+        width: 90%;
+    }
 }
