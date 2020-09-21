@@ -1,19 +1,25 @@
 {
-  "name": "node-express-postgresql-exercise",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./index.js",
-    "dev": "nodemon ./index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-es6-template-engine": "^2.2.3",
-    "pg-promise": "^10.6.1"
-  }
+    "name": "yelp-clone",
+    "version": "1.0.0",
+    "description": "Yelp Clone for creating an express app",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node ./index.js",
+        "dev": "nodemon ./index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cookie-parser": "^1.4.5",
+        "express": "^4.17.1",
+        "express-es6-template-engine": "^2.2.3",
+        "express-session": "^1.17.1",
+        "helmet": "^4.1.1",
+        "morgan": "^1.10.0",
+        "pg-promise": "^10.6.1",
+        "session-file-store": "^1.4.0"
+    }
 }

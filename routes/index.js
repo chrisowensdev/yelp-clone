@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
     res.render('template', {
         locals: {
             title: 'Yelp Clone',
-            restaurantData: restaurantData
+            restaurantData: restaurantData,
+            is_logged_in: req.session.is_logged_in
         },
         partials: {
             partial: 'partial-index'

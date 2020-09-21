@@ -12,7 +12,8 @@ router.get('/:name', async (req, res) => {
         locals: {
             title: restaurantData.restaurant_name,
             restaurantData: restaurantData,
-            reviewData: reviewData
+            reviewData: reviewData,
+            is_logged_in: req.session.is_logged_in
         },
         partials: {
             partial: 'partial-business'
