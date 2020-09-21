@@ -26,19 +26,10 @@ server.listen(port, hostname, () => {
 
 const rootController = require('./routes/index');
 const businessController = require('./routes/business');
+const signupController = require('./routes/users-signup');
+const loginController = require('./routes/users-login');
 
 app.use('/', rootController);
 app.use('/business', businessController);
-
-
-// const restaurantsModel = require('./models/restaurantsModel');
-
-// app.get('/business/:name', async (req, res) => {
-//     const restaurantData = await restaurantsModel.getAllRestaurants();
-//     restaurantData.map(restaurant => {
-//         if (req.params.name === restaurant.slug) {
-//             console.log(restaurant.restaurant_name)
-//         }
-//     })
-//     res.send('ok').end();
-// })
+app.use('/users/signup', signupController);
+app.use('/users/login', loginController);
