@@ -4,7 +4,14 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    res.send('OK').end();
+    res.render('template', {
+        locals: {
+            title: 'Signup'
+        },
+        partials: {
+            partial: 'partial-signup'
+        }
+    })
 })
 
 module.exports = router;
