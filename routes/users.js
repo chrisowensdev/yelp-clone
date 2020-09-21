@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const users = require('../models/usersModel');
+const userModel = require('../models/usersModel');
 
 router.get('/', (req, res) => {
     res.redirect('/users/login')
@@ -37,6 +37,7 @@ router.post('/signup', async (req, res) => {
         email,
         password
     } = req.body;
+    userModel.signUpUser(first_name, last_name, email, password);
     console.log('Form submission is: ', req.body);
     res.sendStatus(200);
 });
