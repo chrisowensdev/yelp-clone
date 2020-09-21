@@ -21,6 +21,23 @@ h3 {
     text-align: center;
 }
 
+.restaurant-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.restaurant-card h2 {
+    text-align: left;
+}
+
+.restaurant-card a {
+    text-decoration: none;
+    color: #000;
+}
+
 .restaurant-info {
     max-width: 600px;
     margin: 0 auto;

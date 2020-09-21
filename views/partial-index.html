@@ -2,7 +2,10 @@
 ${restaurantData.map(restaurant => {
 return `
 <div class="restaurant-card">
-    <a href="./business/${restaurant.slug}">${restaurant.restaurant_name}</a>
+    <h2>
+        <a href="./business/${restaurant.slug}">${restaurant.restaurant_name}</a>
+    </h2>
+
     ${restaurant.category}
 </div>
 `
