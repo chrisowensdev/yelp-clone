@@ -1,8 +1,10 @@
 'use strict';
 
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
-const userModel = require('../models/usersModel');
+
+const UsersModel = require('../models/usersModel');
 
 router.get('/', (req, res) => {
     res.redirect('/users/login')
@@ -11,7 +13,8 @@ router.get('/', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('template', {
         locals: {
-            title: 'Login'
+            title: 'Login',
+            is_logged_in: req.session.is_logged_in
         },
         partials: {
             partial: 'partial-login'
@@ -22,7 +25,8 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
     res.render('template', {
         locals: {
-            title: 'Signup'
+            title: 'Signup',
+            is_logged_in: req.session.is_logged_in
         },
         partials: {
             partial: 'partial-signup'
@@ -30,16 +34,32 @@ router.get('/signup', (req, res) => {
     });
 });
 
-router.post('/signup', async (req, res) => {
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+})
+
+router.post('/signup', (req, res) => {
     const {
         first_name,
         last_name,
         email,
         password
     } = req.body;
-    userModel.signUpUser(first_name, last_name, email, password);
-    console.log('Form submission is: ', req.body);
-    res.sendStatus(200);
+
+    // Salt AND Hash our password!
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+
+    const userInstance = new UsersModel(null, first_name, last_name, email, hash);
+
+    userInstance.save().then(response => {
+        if (response.id !== undefined) {
+            res.redirect('/users/login');
+        } else {
+            res.redirect('/users/signup');
+        }
+    })
 });
 
 router.post('/login', (req, res) => {
@@ -47,8 +67,21 @@ router.post('/login', (req, res) => {
         email,
         password
     } = req.body;
-    console.log('Login form submission:', req.body);
-    res.sendStatus(200);
-})
+    const userInstance = new UsersModel(null, null, null, email, password);
+    userInstance.login().then(response => {
+        req.session.is_logged_in = response.isValid;
+        if (!!response.isValid) {
+            const {
+                first_name,
+                user_id
+            } = response;
+            req.session.first_name = first_name;
+            req.session.user_id = user_id;
+            res.redirect('/');
+        } else {
+            res.sendStatus(401);
+        }
+    });
+});
 
 module.exports = router;
