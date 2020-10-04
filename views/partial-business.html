@@ -7,15 +7,16 @@
         <p>Takeout: ${restaurantData.takeout === true ? 'Yes' : 'No'}</p>
     </div>
 
-
+    ${!!is_logged_in ? `
     <form action="/business" method="POST">
         <input type="hidden" name="restaurantId" value=${restaurantData.id}>
+        <input type="hidden" name="restaurantSlug" value=${restaurantData.slug}>
         <h2>Write a review</h2>
         <label>Title<br>
             <input type="text" name="title">
         </label><br>
         <label>Review
-            <textarea type="text" name="review" rows="4">Tell us about your experience</textarea>
+            <textarea type="text" name="review" rows="4" placeholder="Tell us about your experience"></textarea>
         </label><br>
         <label class="rating-label">Rating
             <select name="stars" id="stars">
@@ -29,6 +30,11 @@
         </label>
         <button type="submit">Submit Review</button>
     </form>
+
+    ` : `
+    <a href="/users/login">Login</a>
+    `
+    }
 
 
     <h2>Reviews</h2>

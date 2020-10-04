@@ -27,10 +27,11 @@ router.post('/:slug?', async (req, res) => {
         title,
         review,
         stars,
-        restaurantId
+        restaurantId,
+        restaurantSlug
     } = req.body;
-    restaurantsModel.addReview(title, review, stars, restaurantId);
-    res.redirect('back');
+    restaurantsModel.addReview(title, review, stars, restaurantId, req.session.user_id);
+    res.redirect(`/business/${restaurantSlug}`);
 });
 
 
