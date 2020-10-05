@@ -3,7 +3,7 @@
         <h1>${title}</h1>
         <p>Category: ${restaurantData.category}</p>
         <p>Stars: ${restaurantData.stars}</p>
-        <p>Distance: ${restaurantData.distance}</p>
+        <p>Distance: ${restaurantData.distance} miles</p>
         <p>Takeout: ${restaurantData.takeout === true ? 'Yes' : 'No'}</p>
     </div>
 
@@ -42,7 +42,7 @@
     return `
     <div class="review-card">
         <h3>${review.title}</h3>
-        <p class="review-rating">${review.stars}</p>
+        <p class="review-rating">${review.stars} stars</p>
         <p>${review.content}</p>
     </div>
     `

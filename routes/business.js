@@ -22,7 +22,7 @@ router.get('/:name', async (req, res) => {
 
 })
 
-router.post('/:slug?', async (req, res) => {
+router.post('/:slug?', (req, res) => {
     const {
         title,
         review,
